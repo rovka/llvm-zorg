@@ -1,4 +1,5 @@
 from buildbot.plugins import util
+from buildbot import www
 #from twisted.python import log
 
 import config
@@ -6,14 +7,14 @@ import config
 
 def getAuth():
     # For test local setup use NoAuth instead.
-    auth = util.GitHubAuth(
-        clientId=str(config.options.get('GitHub Auth', 'clientId')),
-        clientSecret=str(config.options.get('GitHub Auth', 'clientSecret')),
-        apiVersion=4,
-        getTeamsMembership=True,
-        debug=False,
-    )
-    return auth
+    # auth = util.GitHubAuth(
+    #     clientId=str(config.options.get('GitHub Auth', 'clientId')),
+    #     clientSecret=str(config.options.get('GitHub Auth', 'clientSecret')),
+    #     apiVersion=4,
+    #     getTeamsMembership=True,
+    #     debug=False,
+    # )
+    return www.auth.NoAuth()
 
 
 def getAuthz():
